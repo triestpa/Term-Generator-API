@@ -1,8 +1,11 @@
 {
   "name": "name-generator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "engines": {
+    "node": "8.1.4"
+  },
+  "description": "A pseudo-random human-readable term generator to assist in deterministic password, username, keyword, and sentence generation.",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "serve": "node server.js & http-server ./public",
