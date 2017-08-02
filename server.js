@@ -43,7 +43,7 @@ app.use(async (ctx, next) => {
 
 /** Generate words and return result */
 app.use(async ctx => {
-  if (ctx.request.path === '/generate') {
+  if (ctx.request.path === '/') {
     const query = ctx.request.query
     const words = generate.getWords(query.seed, query.offset, query.letter,
                                     query.minYear, query.maxYear)
