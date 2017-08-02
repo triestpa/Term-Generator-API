@@ -1,0 +1,12 @@
+:root {
+  --main-color: #06c;
+}
+
+pre {
+  color: var(--main-color)
+}
+
+.app-container {
+  padding: 24px;
+  max-width: 900px;
+}

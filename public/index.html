@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Authenticator</title>
+    <meta name="description" content="Psuedo-random number generator authenticator app.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://cdn.muicss.com/mui-0.9.20/css/mui.min.css" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container" id="vue-instance">
+      <form class="mui-form">
+        <legend>Title</legend>
+        <div class="mui-textfield">
+          <input type="text" v-model="seed" placeholder="Seed Value (optional, random if not provided)">
+        </div>
+        <div class="mui-textfield">
+          <input type="number" v-model="offset" placeholder="Offset Value (optional)">
+        </div>
+        <div class="mui-textfield">
+          <input type="text" v-model="letter" placeholder="First Letter (optional)">
+        </div>
+        <button type="button" class="mui-btn mui-btn--raised mui-btn--primary" v-on:click="generate()">Generate</button>
+      </form>
+      <div v-if="error">
+        {{error}}
+      </div>
+      <div v-if="words">
+        <div class="mui-panel">
+          <h5>API Response</h5>
+          <pre>{{requestURL}}</pre>
+          <pre>{{wordObjectString}}</pre>
+        </div>
+
+        <div class="mui-panel">
+          <h5>Unique Username</h5>
+          <h4>{{username}}</h4>
+        </div>
+
+        <div class="mui-panel">
+          <h5>Unqiue Animal</h5>
+          <h4>{{animal}}</h4>
+        </div>
+
+        <div class="mui-panel">
+          <h5>Unqiue Animal With Name</h5>
+          <h4>{{animalName}}</h4>
+        </div>
+
+          <!--
+          <h5>Unqiue Animal With Title</h5>
+          <h4>{{animalLong}}</h4>
+
+          <h5>Mythical Creature</h5>
+          <h4>{{creature}}</h4>
+
+          <h5>Mythical Creature Name</h5>
+          <h4>{{creatureName}}</h4>
+
+          <h5>Mythical Creature With Title</h5>
+          <h4>{{creatureLong}}</h4>
+
+          <h5>Datetime</h5>
+          <h4>{{dateTime}}</h4>
+
+          <h5>Date-Place</h5>
+          <h4>{{dateTimePlace}}</h4>
+
+          <h5>Statement</h5>
+          <h4>{{statement}}</h4>
+
+          <h5>Statement Long</h5>
+          <h4>{{statementLong}}</h4> -->
+      </div>
+    </div>
+    <script src="https://cdn.muicss.com/mui-0.9.20/js/mui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
