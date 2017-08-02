@@ -40,7 +40,7 @@ function getEntry (arr, generator, letter = null) {
 /**
  * Javascript implementation of Java's 'hashCode()' String method.
  * NOT considered cryptographically secure or immune to hashtable collisions.
- * This is because there are near-infinite potential string inputs and only (2^53)-1 valid integer outputs.
+ * This is because there are near-infinite potential string inputs and only (2^53)-1 valid js integer outputs.
  */
 function hashStringToInt(str) {
   let hash = 0;
@@ -115,7 +115,6 @@ module.exports.getWords= function (seed, offset = 0, letter = null, minYear=1000
   let animal = getEntry(dataSets.animals, generator, letter)
   let country = getEntry(dataSets.countries, generator, letter)
 
-  let year = generator.nextBoundedInt(minYear, maxYear)
 
   // Generate a date based on a random offset from now
   let randomTimeOffset = generator.nextBoundedInt(0, 10 ** 12)
@@ -125,6 +124,7 @@ module.exports.getWords= function (seed, offset = 0, letter = null, minYear=1000
   let hour = date.getHours()
   let minute = date.getMinutes()
   let second = date.getSeconds()
+  let year = generator.nextBoundedInt(minYear, maxYear)
 
   let decimal = generator.nextFloat()
 

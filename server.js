@@ -2,7 +2,7 @@ const Koa = require('koa');
 const Joi = require('joi')
 const generate = require('./generate')
 
-const app = new Koa();
+const app = new Koa()
 
 /** Setup schema for URL query params */
 const querySchema = Joi.object().keys({
