@@ -12,9 +12,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "joi": "10.6.0",
-    "koa": "2.3.0"
+    "koa": "2.3.0",
+    "tiny-prng": "0.0.1"
   }
 }

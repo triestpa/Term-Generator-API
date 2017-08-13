@@ -1,6 +1,6 @@
 const fs = require('fs')
 const readline = require('readline')
-const PRNG = require('./prng')
+const PRNG = require('tiny-prng')
 
 // Read each line of a file into an array
 function readNewlineDelimitedFile (filepath, encoding = 'utf8') {
