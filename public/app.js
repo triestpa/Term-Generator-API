@@ -30,7 +30,7 @@ const vm = new Vue ({
     },
   },
   async created () {
-    this.baseUrl = '/generate'
+    this.baseUrl = '/api'
     this.generate()
   },
   methods: {

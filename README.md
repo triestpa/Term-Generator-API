@@ -1,14 +1,14 @@
-# Term Generator Micro-Service
+# Term Generator API
 
 A simple NodeJS server to generate pseudorandom names, creatures, places, times, and more.
 
-Visit https://generator.patricktriest.com for a simple example web app showing a few of the possibilities for how to use this micro-service.
+Visit https://generator.patricktriest.com for a simple example web app showing a few of the possibilities for how to use this API.
 
-The API uses the Tiny-PRNG library(https://github.com/triestpa/Tiny-PRNG) as a pseudorandom number generator, along with lists of various "things" scraped from across the web.  See the comments in `generate.js` for more information on where the terms come from.
+The server uses the Tiny-PRNG library (https://github.com/triestpa/Tiny-PRNG) as a pseudorandom number generator, along with lists of various "things" scraped from across the web.  See the comments in `generate.js` for more information on where the terms come from.
 
 ## API
 
-The server exposes a Very Simple GET API, written with Koa, taking 6 optional parameters -
+The server exposes a very simple HTTP GET interface, taking 6 optional url parameters -
 - `seed` (optional) - The pseudorandom seed value to use when generating terms.  The same seed value will always return the same results.
 - `offset` (optional) - The pseudorandom number generator offset to use.
 - `letter` (optional) - The first letter of each generator word.  Useful for generating alliteration terms.
@@ -16,7 +16,7 @@ The server exposes a Very Simple GET API, written with Koa, taking 6 optional pa
 - `maxYear` (optional) - The max year for the generated date.
 
 ## Example Requests
-##### https://generator.patricktriest.com/generate?seed=12345
+##### https://generator.patricktriest.com/api?seed=12345
 ```
 {
   "name": "Sharde",
@@ -36,7 +36,7 @@ The server exposes a Very Simple GET API, written with Koa, taking 6 optional pa
 }
 ```
 
-##### https://generator.patricktriest.com/generate?seed=12345&offset=5&letter=A
+##### https://generator.patricktriest.com/api?seed=12345&offset=5&letter=A
 ```
 {
   "name": "Arlo",
@@ -56,7 +56,7 @@ The server exposes a Very Simple GET API, written with Koa, taking 6 optional pa
 }
 ```
 
-##### https://generator.patricktriest.com/generate?seed=12345&offset=294&letter=F&minYear=1992&maxYear=2017
+##### https://generator.patricktriest.com/api?seed=12345&offset=294&letter=F&minYear=1992&maxYear=2017
 ```
 {
   "name": "Foye",
@@ -83,7 +83,7 @@ Visit https://generator.patricktriest.com to generate your own.
 
 ##### API Response
 ```
-http://localhost:3000/generate
+http://localhost:3000/api
 {
   "name": "Elvie",
   "attribute": "Intense",

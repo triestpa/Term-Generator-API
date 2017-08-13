@@ -68,7 +68,7 @@ termGenerateServer.use(async (ctx) => {
 })
 
 /** Validate input, generate words, and return result */
-app.use(mount('/generate', termGenerateServer))
+app.use(mount('/api', termGenerateServer))
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
