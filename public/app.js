@@ -30,7 +30,7 @@ const vm = new Vue ({
     },
   },
   async created () {
-    this.baseUrl = 'http://localhost:3000/generate'
+    this.baseUrl = '/generate'
     this.generate()
   },
   methods: {
