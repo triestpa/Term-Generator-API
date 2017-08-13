@@ -124,9 +124,13 @@ module.exports.getWords= function (seed, offset = 0, letter = null, minYear=1000
   let hour = date.getHours()
   let minute = date.getMinutes()
   let second = date.getSeconds()
-  let year = generator.nextBoundedInt(minYear, maxYear)
+
+  console.log({minYear, maxYear})
+  let year = generator.nextBoundedInt(parseInt(minYear), parseInt(maxYear))
+  console.log(year)
 
   let decimal = generator.nextFloat()
+
 
   return { name, attribute,  animal, creature, noun, city, country, year, month, day, hour, minute, second, decimal  }
 }
