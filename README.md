@@ -9,11 +9,11 @@ The API uses the Tiny-PRNG library(https://github.com/triestpa/Tiny-PRNG) as a p
 ## API
 
 The server exposes a Very Simple GET API, written with Koa, taking 6 optional parameters -
-- seed (optional) - The pseudorandom seed value to use when generating terms.  The same seed value will always return the same results.
-- offset (optional) - The pseudorandom number generator offset to use.
-- letter (optional) - The first letter of each generator word.  Useful for generating alliteration terms.
-- minYear (optional) - The min year for the generated date.
-- maxYear (optional) - The max year for the generated date.
+- `seed` (optional) - The pseudorandom seed value to use when generating terms.  The same seed value will always return the same results.
+- `offset` (optional) - The pseudorandom number generator offset to use.
+- `letter` (optional) - The first letter of each generator word.  Useful for generating alliteration terms.
+- `minYear` (optional) - The min year for the generated date.
+- `maxYear` (optional) - The max year for the generated date.
 
 ## Example Requests
 ##### https://generator.patricktriest.com/generate?seed=12345
@@ -79,6 +79,7 @@ The server exposes a Very Simple GET API, written with Koa, taking 6 optional pa
 
 ### Example Generated Phrases
 The pseudo-random terms can be used to generate countless identifiers and phrases.
+Visit https://generator.patricktriest.com to generate your own.
 
 ##### API Response
 ```
@@ -102,44 +103,44 @@ http://localhost:3000/generate
 ```
 ##### Unique Username
 
-Intense Elvie
+`Intense Elvie`
 
 ##### Unique Animal
 
-Intense Pig
+`Intense Pig`
 
 ##### Unique Animal With Name
 
-Elvie the Intense Pig
+`Elvie the Intense Pig`
 
 ##### Unique Animal With Title
 
-Elvie the Intense Pig of Semarang
+`Elvie the Intense Pig of Semarang`
 
 ##### Mythical Creature
 
-Intense Boggart
+`Intense Boggart`
 
 ##### Mythical Creature Name
 
-Elvie the Intense Boggart
+`Elvie the Intense Boggart`
 
 ##### Mythical Creature With Title
 
-Elvie the Intense Boggart of Semarang
+`Elvie the Intense Boggart of Semarang`
 
 ##### Datetime
 
-05:47:24, October 6, 1602
+`05:47:24, October 6, 1602`
 
 ##### Date-Place
 
-October 1602 in Timor-Leste
+`October 1602 in Timor-Leste`
 
 ##### Statement
 
-The Intense Pig Stole My Outcome in Semarang
+`The Intense Pig Stole My Outcome in Semarang`
 
 ##### Statement Long
 
-The Intense Pig of Timor-Leste Stole Elvie's Outcome in Semarang during October, 1602
+`The Intense Pig of Timor-Leste Stole Elvie's Outcome in Semarang during October, 1602`
