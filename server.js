@@ -1,17 +1,12 @@
-const Koa = require('koa');
+const Koa = require('koa')
+const serve = require('koa-static')
+const mount = require('koa-mount');
 const Joi = require('joi')
-const generate = require('./generate')
+const generator = require('./generator')
 
-const app = new Koa()
+const app = new Koa();
 
-/** Setup schema for URL query params */
-const querySchema = Joi.object().keys({
-    seed: Joi.string(),
-    offset: Joi.number().integer().min(0).max(10 ** 6),
-    letter: Joi.string().regex(/^[A-Z]$/),
-    minYear: Joi.number().integer().min(0).max(4000),
-    maxYear: Joi.string().min(0).max(4000),
-})
+/** Setup Default Handler Middleware */
 
 /** Log Requests */
 app.use(async (ctx, next) => {
@@ -28,8 +23,31 @@ app.use(async (ctx, next) => {
   return next()
 })
 
+/** Log Error */
+app.on('error', err => {
+  console.error('server error', err)
+})
+
+
+/** Serve the sample page */
+const htmlPageServer = new Koa();
+htmlPageServer.use(serve('public'))
+app.use(mount('/', htmlPageServer))
+
+/** Setup term generator API route */
+const termGenerateServer = new Koa();
+
+/** Setup schema for URL query params */
+const querySchema = Joi.object().keys({
+    seed: Joi.string(),
+    offset: Joi.number().integer().min(0).max(10 ** 6),
+    letter: Joi.string().regex(/^[A-Z]$/),
+    minYear: Joi.number().integer().min(0).max(4000),
+    maxYear: Joi.string().min(0).max(4000),
+})
+
 /** Validate Parameters */
-app.use(async (ctx, next) => {
+termGenerateServer.use(async (ctx, next) => {
   const query = ctx.request.query
   const result = Joi.validate(query, querySchema)
 
@@ -41,20 +59,16 @@ app.use(async (ctx, next) => {
   }
 })
 
-/** Generate words and return result */
-app.use(async ctx => {
-  if (ctx.request.path === '/') {
-    const query = ctx.request.query
-    const words = generate.getWords(query.seed, query.offset, query.letter,
-                                    query.minYear, query.maxYear)
-    ctx.body = words
-  }
+/** Generate psuedorandom values */
+termGenerateServer.use(async (ctx) => {
+  const query = ctx.request.query
+  const words = generator.getWords(query.seed, query.offset, query.letter,
+                                  query.minYear, query.maxYear)
+  ctx.body = words
 })
 
-/** Log Error */
-app.on('error', err => {
-  console.error('server error', err)
-})
+/** Validate input, generate words, and return result */
+app.use(mount('/generate', termGenerateServer))
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
