@@ -1,6 +1,6 @@
 # Term Generator API
 
-A simple NodeJS server to generate pseudorandom names, creatures, places, times, and more.
+A simple NodeJS API to generate generate usernames, filler sentences, memorable passphrases, Heroku-style server ids, and much more.
 
 Visit https://generator.patricktriest.com for a simple example web app showing a few of the possibilities for how to use this API.
 
